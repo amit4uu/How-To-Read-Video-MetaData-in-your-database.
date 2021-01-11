@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VideoDetailsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="VideoDetails">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Length" Type="nvarchar" MaxLength="50" />
+          <Property Name="FrameWidth" Type="nvarchar" MaxLength="50" />
+          <Property Name="FrameHeight" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodecName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodecTag" Type="nvarchar" MaxLength="50" />
+          <Property Name="BitRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FrameRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodecDescription" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="VideoDetailsModelStoreContainer">
+          <EntitySet Name="VideoDetails" EntityType="Self.VideoDetails" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VideoDetailsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VideoDetailsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VideoDetails" EntityType="VideoDetailsModel.VideoDetail" />
+        </EntityContainer>
+        <EntityType Name="VideoDetail">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FrameWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FrameHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodecName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodecTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FrameRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodecDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VideoDetailsModelStoreContainer" CdmEntityContainer="VideoDetailsEntities">
+          <EntitySetMapping Name="VideoDetails">
+            <EntityTypeMapping TypeName="VideoDetailsModel.VideoDetail">
+              <MappingFragment StoreEntitySet="VideoDetails">
+                <ScalarProperty Name="CodecDescription" ColumnName="CodecDescription" />
+                <ScalarProperty Name="FrameRate" ColumnName="FrameRate" />
+                <ScalarProperty Name="BitRate" ColumnName="BitRate" />
+                <ScalarProperty Name="CodecTag" ColumnName="CodecTag" />
+                <ScalarProperty Name="CodecName" ColumnName="CodecName" />
+                <ScalarProperty Name="FrameHeight" ColumnName="FrameHeight" />
+                <ScalarProperty Name="FrameWidth" ColumnName="FrameWidth" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
