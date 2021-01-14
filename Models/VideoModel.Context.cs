@@ -13,10 +13,10 @@ namespace Videodetail.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VideoDetailsEntities : DbContext
+    public partial class VideoDetailsEntities1 : DbContext
     {
-        public VideoDetailsEntities()
-            : base("name=VideoDetailsEntities")
+        public VideoDetailsEntities1()
+            : base("name=VideoDetailsEntities1")
         {
         }
     

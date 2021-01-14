@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="VideoDetailsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="VideoDetailsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="VideoDetails">
           <Key>
             <PropertyRef Name="FileId" />
@@ -18,17 +18,16 @@
           <Property Name="BitRate" Type="nvarchar" MaxLength="50" />
           <Property Name="FrameRate" Type="nvarchar" MaxLength="50" />
           <Property Name="CodecDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrentFrameNumber" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="VideoDetailsModelStoreContainer">
           <EntitySet Name="VideoDetails" EntityType="Self.VideoDetails" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VideoDetailsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="VideoDetailsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="VideoDetails" EntityType="VideoDetailsModel.VideoDetail" />
-        </EntityContainer>
         <EntityType Name="VideoDetail">
           <Key>
             <PropertyRef Name="FileId" />
@@ -42,25 +41,30 @@
           <Property Name="BitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FrameRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CodecDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentFrameNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityContainer Name="VideoDetailsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VideoDetails" EntityType="Self.VideoDetail" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VideoDetailsModelStoreContainer" CdmEntityContainer="VideoDetailsEntities">
+        <EntityContainerMapping StorageEntityContainer="VideoDetailsModelStoreContainer" CdmEntityContainer="VideoDetailsEntities1">
           <EntitySetMapping Name="VideoDetails">
             <EntityTypeMapping TypeName="VideoDetailsModel.VideoDetail">
               <MappingFragment StoreEntitySet="VideoDetails">
-                <ScalarProperty Name="CodecDescription" ColumnName="CodecDescription" />
-                <ScalarProperty Name="FrameRate" ColumnName="FrameRate" />
-                <ScalarProperty Name="BitRate" ColumnName="BitRate" />
-                <ScalarProperty Name="CodecTag" ColumnName="CodecTag" />
-                <ScalarProperty Name="CodecName" ColumnName="CodecName" />
-                <ScalarProperty Name="FrameHeight" ColumnName="FrameHeight" />
-                <ScalarProperty Name="FrameWidth" ColumnName="FrameWidth" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
                 <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="FrameWidth" ColumnName="FrameWidth" />
+                <ScalarProperty Name="FrameHeight" ColumnName="FrameHeight" />
+                <ScalarProperty Name="CodecName" ColumnName="CodecName" />
+                <ScalarProperty Name="CodecTag" ColumnName="CodecTag" />
+                <ScalarProperty Name="BitRate" ColumnName="BitRate" />
+                <ScalarProperty Name="FrameRate" ColumnName="FrameRate" />
+                <ScalarProperty Name="CodecDescription" ColumnName="CodecDescription" />
+                <ScalarProperty Name="CurrentFrameNumber" ColumnName="CurrentFrameNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

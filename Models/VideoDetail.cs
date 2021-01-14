@@ -23,5 +23,6 @@ namespace Videodetail.Models
         public string BitRate { get; set; }
         public string FrameRate { get; set; }
         public string CodecDescription { get; set; }
+        public string CurrentFrameNumber { get; set; }
     }
 }
